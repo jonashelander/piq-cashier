@@ -1,6 +1,6 @@
 import _PaymentIQCashier from 'paymentiq-cashier-bootstrapper'
 import { useEffect } from 'react';
-
+import '../styles/Cashier.css'
 
 const cashierInstanse = () => {
   new _PaymentIQCashier('#cashier',
@@ -9,7 +9,9 @@ const cashierInstanse = () => {
       userId: 'Han Solo',
       sessionId: '66',
       environment: 'test', // if not set, defaults to production
-      method: 'deposit' // if not set, defaults to deposit
+      method: 'deposit', // if not set, defaults to deposit
+      containerHeight: '500px',
+      containerWidth: '400px'
     },
     (api) => {
       console.log('Cashier intialized and ready to take down the empire')

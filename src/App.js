@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.css';
 import _PaymentIQCashier from 'paymentiq-cashier-bootstrapper'
 import Cashier from './components/Cashier';
 
@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div className='container'>
-      <Cashier />
+        <Cashier />   
     </div>
   );
 }
