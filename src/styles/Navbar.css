@@ -1,5 +1,10 @@
 .navbar {
-    height: 55px;
-    background-color: aquamarine;
-    margin-bottom: 20px;
+  height: 55px;
+  background-color: #46beab;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: last baseline;
+  padding-left: 20px;
+  padding-right: 20px;
 }
