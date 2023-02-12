@@ -4,5 +4,9 @@
 }
 
 a {
-  margin-right: 10px;
+  margin-left: 20px;
+}
+
+h1 {
+  flex: 2;
 }
