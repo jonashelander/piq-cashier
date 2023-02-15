@@ -9,3 +9,15 @@
   padding-left: 20px;
   padding-right: 20px;
 }
+
+
+
+button {
+  margin-left: 20px;
+  background-color: #46beab;
+  border: none;
+}
+
+h1 {
+  flex: 2;
+}

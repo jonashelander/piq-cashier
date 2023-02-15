@@ -2,7 +2,7 @@ import _PaymentIQCashier from 'paymentiq-cashier-bootstrapper'
 import { useEffect } from 'react';
 import '../styles/Cashier.css'
 
-const cashierInstanse = () => {
+const cashierInstance = () => {
   new _PaymentIQCashier('#cashier',
     {
       merchantId: '2906',
@@ -26,7 +26,7 @@ const cashierInstanse = () => {
 }
 
 function Cashier() {
-  useEffect(() => { cashierInstanse() });
+  useEffect(() => { cashierInstance() });
 
   return (
     <div id="cashier">
