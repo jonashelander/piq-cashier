@@ -5,7 +5,7 @@ import Signup from "./components/Signup";
 import LandingPage from "./components/LandingPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-const loggedIn = false;
+const loggedIn = true;
 
 function App() {
   return (
