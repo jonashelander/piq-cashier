@@ -1,5 +1,6 @@
 import _PaymentIQCashier from 'paymentiq-cashier-bootstrapper'
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import LoggedInContext from '../contexts/LoggedInContext';
 import '../styles/Cashier.css'
 
 const cashierInstance = () => {
@@ -26,10 +27,12 @@ const cashierInstance = () => {
 }
 
 function Cashier() {
+  
   useEffect(() => { cashierInstance() });
 
   return (
     <div id="cashier">
+      
     </div>
   );
 }

@@ -1,7 +1,8 @@
-import { render } from "@testing-library/react";
+import LoggedInContext from "../contexts/LoggedInContext";
+
 
 function LandingPage() {
-    return(
+    return (
         <div>
             <h1>LandingPage</h1>
         </div>
