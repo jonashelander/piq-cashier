@@ -6,16 +6,16 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ReactKeycloakProvider } from "@react-keycloak/web";
 import keycloak from "./Keycloak";
 import PrivateRoute from "./helpers/PrivateRoute";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import LoggedInContext from "./contexts/LoggedInContext";
 
 
 function App() {
 
-
   const [loggedIn, setLoggedIn] = useState(false);
 
   function signUp() {
+    //redirect to register page
     // Send requeqest to create user
   }
 
@@ -23,23 +23,34 @@ function App() {
     <LoggedInContext.Provider value={{ loggedIn: loggedIn, setLoggedIn: setLoggedIn }}>
 
       <div className="container">
-        <Navbar />
-        {loggedIn ?
-          <BrowserRouter>
-            <Routes>
-              <Route
-                path="/" element={<LandingPage />}
-              />
-            </Routes>
-          </BrowserRouter>
+        {!loggedIn ?
+          (
+            <BrowserRouter>
+            <Navbar />
+              <Routes>
+                <Route path="/"
+                  element={<LandingPage />}
+                />
+              </Routes>
+            </BrowserRouter>
+          )
           :
-          <BrowserRouter>
-            <Routes>
-              <Route path="/"
-                element={<Cashier />}
-              />
-            </Routes>
-          </BrowserRouter>
+          (
+            <BrowserRouter>
+            <Navbar />
+              <Routes>
+                <Route path="/"
+                  element={<LandingPage />}
+                />
+                <Route path="/deposit"
+                  element={<Cashier />}
+                />
+                <Route path="/withdrawal"
+                  element={<Cashier />}
+                />
+              </Routes>
+            </BrowserRouter>
+          )
         }
 
         {/* <ReactKeycloakProvider authClient={keycloak}>

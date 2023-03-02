@@ -1,33 +1,49 @@
 import { useContext, useState } from "react";
-import "../styles/Navbar.css";
+import "../styles/App.css";
 import LoggedInContext from "../contexts/LoggedInContext";
 // import { useKeycloak } from "@react-keycloak/web";
-
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
-  const { setLoggedIn } = useContext(LoggedInContext);
+  const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
+  const navigate = useNavigate();
+
+  const handleSignUp = () => {
+    // Navigate to Sign up page
+  }
 
   const handleLogIn = () => {
     setLoggedIn(true);
+    navigate("/");
   }
 
   const handleLogOut = () => {
     setLoggedIn(false);
+    navigate("/");
   }
 
-  const [balance, setBalance] = useState(1000);
+  const [balance, setBalance] = useState(90);
   // const { keycloak, initialized } = useKeycloak();
-
-  const test = () => setBalance(balance + 10);
-
 
   return (
     <header className="navbar">
-      <h1>PaymentIQ Casino Demo</h1>
-      <h3>Balance: $ {balance}</h3>
+      <h1>Merchant Platform Demo</h1>
+      {loggedIn ?
+        <h3>Balance: $ {balance}</h3>
+        : null}
 
       <nav>
-        <button onClick={handleLogIn}>Log In</button>
+        {loggedIn ? (
+          <button onClick={handleLogOut}>Log Out</button>
+        )
+          :
+          (
+            <div>
+              <button onClick={handleLogIn}>Log In</button>
+              <button onClick={handleSignUp}>Sign Up</button>
+            </div>
+          )
+        }
 
         {/* {!keycloak.authenticated && (
           <button
