@@ -2,6 +2,7 @@ import "./styles/App.css";
 import Cashier from "./components/Cashier";
 import Navbar from "./components/Navbar";
 import LandingPage from "./components/LandingPage";
+import SignUp from "./components/Signup";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ReactKeycloakProvider } from "@react-keycloak/web";
 import keycloak from "./Keycloak";
@@ -30,6 +31,9 @@ function App() {
               <Routes>
                 <Route path="/"
                   element={<LandingPage />}
+                />
+                <Route path="/signup"
+                  element={<SignUp />}
                 />
               </Routes>
             </BrowserRouter>

@@ -10,6 +10,7 @@ function Navbar() {
 
   const handleSignUp = () => {
     // Navigate to Sign up page
+    navigate("/signup");
   }
 
   const handleLogIn = () => {
