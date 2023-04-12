@@ -9,6 +9,7 @@ import keycloak from "./Keycloak";
 import PrivateRoute from "./helpers/PrivateRoute";
 import { useContext, useEffect, useState } from "react";
 import LoggedInContext from "./contexts/LoggedInContext";
+import LoginScreen from "./components/Login";
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
             <Navbar />
               <Routes>
                 <Route path="/"
-                  element={<LandingPage />}
+                  element={<LoginScreen />}
                 />
                 <Route path="/signup"
                   element={<SignUp />}

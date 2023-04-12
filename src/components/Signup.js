@@ -10,7 +10,7 @@ function SignUp() {
 
 
     return (
-        <div className="signUp">
+        <div className="signup">
 
             <form method="post">
                 <div>

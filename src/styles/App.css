@@ -10,6 +10,7 @@
 
 .navbar {
   display: flex;
+  justify-content: space-between;
   height: 55px;
   background-color: #46beab;
   margin-bottom: 50px;
@@ -19,8 +20,26 @@
 }
 
 .navbar h1 {
-  flex: 2;
+  /* Using justify-content in .navbar instead.
+  flex: 1; */
 }
+
+.signup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginHeader h1 {
+  margin-bottom: 20px;
+}
+
 
 .landingPageLoggedIn {
   display: flex;

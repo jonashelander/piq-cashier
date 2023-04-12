@@ -11,7 +11,7 @@ const cashierInstance = (props) => {
     {
       merchantId: '2906',
       userId: 'JonasEUR',
-      sessionId: '66',
+      sessionId: '1234',
       environment: 'test', // if not set, defaults to production
       method: props.method, // if not set, defaults to deposit
       containerHeight: '800px',
@@ -19,7 +19,7 @@ const cashierInstance = (props) => {
       autoOpenFirstPaymentMethod: false,
       // providerType: 'creditcard',
       // listType: 'grid',
-      lastUsedDepositAmount: true,  
+      // lastUsedDepositAmount: true,  
       // predefinedValues: false,
     },
     (api) => {
