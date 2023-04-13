@@ -9,17 +9,20 @@ function Navbar() {
   const navigate = useNavigate();
 
   const handleSignUp = () => {
-    // Navigate to Sign up page
     navigate("/signup");
   }
 
-  const handleLogIn = () => {
-    setLoggedIn(true);
-    navigate("/");
+  const handleLogIn = (event) => {
+    event.preventDefault();
+    navigate("/login");
   }
 
   const handleLogOut = () => {
     setLoggedIn(false);
+    navigate("/");
+  }
+
+  const handleNavigateHome = () => {
     navigate("/");
   }
 
@@ -28,7 +31,7 @@ function Navbar() {
 
   return (
     <header className="navbar">
-      <h1>Merchant Platform Demo</h1>
+      <h1 onClick={handleNavigateHome}>PIQ Cashier</h1>
       {loggedIn ?
         <h3>Balance: $ {balance}</h3>
         : null}

@@ -1,4 +1,5 @@
 * {
+  /* width: 1200px; */
   margin: 0;
   padding: 0;
 }
@@ -26,14 +27,20 @@
 
 .signup {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
+}
+
+.signupHeader h1 {
+  margin-bottom: 20px;
 }
 
 .login {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .loginHeader h1 {
@@ -45,6 +52,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 30px;
 }
 
 .landingPageLoggedOut {

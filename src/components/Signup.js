@@ -3,15 +3,21 @@ import { useState } from "react";
 function SignUp() {
     const [firstName, setFirstName] = useState();
     const [lastName, setlasttName] = useState();
+    const [dateOfBirth, setDateOfBirth] = useState();
+    const [sex, setSex] = useState();
     const [country, setCountry] = useState();
+    const [state, setState] = useState();
     const [street, setStreet] = useState();
     const [zip, setZip] = useState();
-    const [state, setState] = useState();
+    const [phoneNumber, setPhoneNumber] = useState();
+    const [email, setEmail] = useState();
 
 
     return (
         <div className="signup">
-
+            <div className="signupHeader">
+                <h1>Sign up</h1>
+            </div>
             <form method="post">
                 <div>
                     <label>
@@ -31,11 +37,35 @@ function SignUp() {
                 </div>
                 <div>
                     <label>
+                        Date of birth:
+                    </label>
+                    <input
+                        onChange={event => setDateOfBirth(event.target.value)}
+                        type="text" name="firstName" />
+                </div>
+                <div>
+                    <label>
+                        Sex:
+                    </label>
+                    <input
+                        onChange={event => setSex(event.target.value)}
+                        type="text" name="firstName" />
+                </div>
+                <div>
+                    <label>
                         Country:
                     </label>
                     <input
                         onChange={event => setCountry(event.target.value)}
                         type="text" name="country" />
+                </div>
+                <div>
+                    <label>
+                        State:
+                    </label>
+                    <input
+                        onChange={event => setState(event.target.value)}
+                        type="text" name="state" />
                 </div>
                 <div>
                     <label>
@@ -55,25 +85,24 @@ function SignUp() {
                 </div>
                 <div>
                     <label>
-                        State:
+                        Phone number:
                     </label>
                     <input
-                        onChange={event => setState(event.target.value)}
-                        type="text" name="state" />
+                        onChange={event => setPhoneNumber(event.target.value)}
+                        type="text" name="firstName" />
+                </div>
+                <div>
+                    <label>
+                        Email:
+                    </label>
+                    <input
+                        onChange={event => setEmail(event.target.value)}
+                        type="text" name="firstName" />
                 </div>
                 <div>
                     <button className="submitButton" type="submit">Submit</button>
                 </div>
             </form>
-
-            <p>{firstName}</p>
-            <p>{lastName}</p>
-            <p>{country}</p>
-            <p>{street}</p>
-            <p>{zip}</p>
-            <p>{state}</p>
-
-
         </div>
     );
 }

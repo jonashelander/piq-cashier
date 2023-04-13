@@ -5,11 +5,11 @@ import LandingPage from "./components/LandingPage";
 import SignUp from "./components/Signup";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ReactKeycloakProvider } from "@react-keycloak/web";
-import keycloak from "./Keycloak";
-import PrivateRoute from "./helpers/PrivateRoute";
+// import keycloak from "./Keycloak";
+// import PrivateRoute from "./helpers/PrivateRoute";
 import { useContext, useEffect, useState } from "react";
 import LoggedInContext from "./contexts/LoggedInContext";
-import LoginScreen from "./components/Login";
+import Login from "./components/Login";
 
 
 function App() {
@@ -31,7 +31,10 @@ function App() {
             <Navbar />
               <Routes>
                 <Route path="/"
-                  element={<LoginScreen />}
+                  element={<LandingPage />}
+                />
+                <Route path="/login"
+                  element={<Login/>}
                 />
                 <Route path="/signup"
                   element={<SignUp />}
