@@ -4,6 +4,7 @@ import LoggedInContext from "../contexts/LoggedInContext";
 // import { useKeycloak } from "@react-keycloak/web";
 import { useNavigate } from "react-router-dom";
 
+
 function Navbar() {
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ function Navbar() {
 
   return (
     <header className="navbar">
-      <h1 onClick={handleNavigateHome}>PIQ Cashier</h1>
+      <h1 onClick={handleNavigateHome}>Cashier</h1>
       {loggedIn ?
         <h3>Balance: $ {balance}</h3>
         : null}

@@ -1,16 +1,41 @@
 import { useState } from "react";
+import { signUp } from "../api/userApi";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
+    const navigate = useNavigate();
     const [firstName, setFirstName] = useState();
-    const [lastName, setlasttName] = useState();
-    const [dateOfBirth, setDateOfBirth] = useState();
+    const [lastName, setlastName] = useState();
+    const [dob, setDob] = useState();
     const [sex, setSex] = useState();
     const [country, setCountry] = useState();
+    const [city, setCity] = useState();
     const [state, setState] = useState();
     const [street, setStreet] = useState();
     const [zip, setZip] = useState();
-    const [phoneNumber, setPhoneNumber] = useState();
+    const [phone, setPhone] = useState();
     const [email, setEmail] = useState();
+
+    const userDTO = {
+        firstName: firstName,
+        lastName: lastName,
+        dob: dob,
+        sex: sex,
+        country: country,
+        state: state,
+        city: city,
+        street: street,
+        zip: zip,
+        phone: phone,
+        email: email
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        signUp(userDTO)
+        .then((res) => {alert(res.data)})
+        .then(navigate("/"))
+    }
 
 
     return (
@@ -18,7 +43,7 @@ function SignUp() {
             <div className="signupHeader">
                 <h1>Sign up</h1>
             </div>
-            <form method="post">
+            <form>
                 <div>
                     <label>
                         First Name:
@@ -32,7 +57,7 @@ function SignUp() {
                         Last Name:
                     </label>
                     <input
-                        onChange={event => setlasttName(event.target.value)}
+                        onChange={event => setlastName(event.target.value)}
                         type="text" name="lastName" />
                 </div>
                 <div>
@@ -40,8 +65,8 @@ function SignUp() {
                         Date of birth:
                     </label>
                     <input
-                        onChange={event => setDateOfBirth(event.target.value)}
-                        type="text" name="firstName" />
+                        onChange={event => setDob(event.target.value)}
+                        type="text" name="dateOfBirth" />
                 </div>
                 <div>
                     <label>
@@ -49,7 +74,7 @@ function SignUp() {
                     </label>
                     <input
                         onChange={event => setSex(event.target.value)}
-                        type="text" name="firstName" />
+                        type="text" name="sex" />
                 </div>
                 <div>
                     <label>
@@ -58,6 +83,14 @@ function SignUp() {
                     <input
                         onChange={event => setCountry(event.target.value)}
                         type="text" name="country" />
+                </div>
+                <div>
+                    <label>
+                        City:
+                    </label>
+                    <input
+                        onChange={event => setCity(event.target.value)}
+                        type="text" name="city" />
                 </div>
                 <div>
                     <label>
@@ -88,8 +121,8 @@ function SignUp() {
                         Phone number:
                     </label>
                     <input
-                        onChange={event => setPhoneNumber(event.target.value)}
-                        type="text" name="firstName" />
+                        onChange={event => setPhone(event.target.value)}
+                        type="text" name="phone" />
                 </div>
                 <div>
                     <label>
@@ -97,10 +130,10 @@ function SignUp() {
                     </label>
                     <input
                         onChange={event => setEmail(event.target.value)}
-                        type="text" name="firstName" />
+                        type="text" name="email" />
                 </div>
                 <div>
-                    <button className="submitButton" type="submit">Submit</button>
+                    <button className="submitButton" type="submit" onClick={handleSubmit}>Submit</button>
                 </div>
             </form>
         </div>
