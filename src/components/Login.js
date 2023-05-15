@@ -1,16 +1,24 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoggedInContext from '../contexts/LoggedInContext';
+import { login, test } from '../api/userApi';
+import UserContext from '../contexts/UserContext';
 
 function Login() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const loginDTO = {
+    email: email,
+    password: password
+  }
 
   const navigate = useNavigate();
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
+  const { user, setUser } = useContext(UserContext);
 
   const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+    setEmail(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
@@ -19,8 +27,22 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setLoggedIn(true);
-    navigate("/");
+    login(loginDTO)
+      .then(response => {
+        if (response.status === 200) {
+          setUser(response.data);
+          setLoggedIn(true);
+          localStorage.setItem('userId', response.data.userId)
+          localStorage.setItem('sessionId', response.data.sessionId)
+          console.log("sessionId is: " + localStorage.getItem('sessionId'));
+          console.log("userId is: " + localStorage.getItem('userId'));
+          navigate("/")
+        }
+      })
+      .catch(error => {
+        alert(error)
+        navigate("/login");
+      });
   };
 
   return (
@@ -29,12 +51,12 @@ function Login() {
       <div className='loginHeader'>
         <h1>Login</h1>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div>
           <label>
             Username:
           </label>
-          <input type="text" value={username} onChange={handleUsernameChange} />
+          <input type="text" value={email} onChange={handleUsernameChange} />
         </div>
         <div>
           <label>

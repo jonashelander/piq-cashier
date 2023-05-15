@@ -5,6 +5,7 @@
 }
 
 .container {
+  font-family: sans-serif;
   width: 1200px;
   margin: 0 auto;
 }
@@ -21,8 +22,15 @@
 }
 
 .navbar h1 {
-  /* Using justify-content in .navbar instead.
-  flex: 1; */
+  cursor: pointer;
+}
+
+.navbar button {
+  cursor: pointer;
+}
+
+.navbar p span:before {
+  content: '€';
 }
 
 .signup {

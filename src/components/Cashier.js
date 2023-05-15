@@ -10,15 +10,15 @@ const cashierInstance = (props) => {
   new _PaymentIQCashier('#cashier',
     {
       merchantId: '2906',
-      userId: 'JonasEUR',
-      sessionId: '1234',
+      userId: localStorage.getItem('userId'),
+      sessionId: localStorage.getItem('sessionId'),
       environment: 'test', // if not set, defaults to production
       method: props.method, // if not set, defaults to deposit
       containerHeight: '800px',
       containerWidth: '400px',
       autoOpenFirstPaymentMethod: false,
       // providerType: 'creditcard',
-      // listType: 'grid',
+      listType: 'grid',
       // lastUsedDepositAmount: true,  
       // predefinedValues: false,
     },

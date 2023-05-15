@@ -15,6 +15,7 @@ function SignUp() {
     const [zip, setZip] = useState();
     const [phone, setPhone] = useState();
     const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
 
     const userDTO = {
         firstName: firstName,
@@ -27,13 +28,13 @@ function SignUp() {
         street: street,
         zip: zip,
         phone: phone,
-        email: email
+        email: email,
+        password: password
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
         signUp(userDTO)
-        .then((res) => {alert(res.data)})
         .then(navigate("/"))
     }
 
@@ -131,6 +132,14 @@ function SignUp() {
                     <input
                         onChange={event => setEmail(event.target.value)}
                         type="text" name="email" />
+                </div>
+                <div>
+                    <label>
+                        Password:
+                    </label>
+                    <input
+                        onChange={event => setPassword(event.target.value)}
+                        type="text" name="password" />
                 </div>
                 <div>
                     <button className="submitButton" type="submit" onClick={handleSubmit}>Submit</button>

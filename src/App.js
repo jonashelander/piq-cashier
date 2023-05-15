@@ -10,11 +10,14 @@ import { ReactKeycloakProvider } from "@react-keycloak/web";
 import { useContext, useEffect, useState } from "react";
 import LoggedInContext from "./contexts/LoggedInContext";
 import Login from "./components/Login";
+import UserContext from "./contexts/UserContext";
+
 
 
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState({});
 
   function signUp() {
     //redirect to register page
@@ -22,46 +25,47 @@ function App() {
   }
 
   return (
-    <LoggedInContext.Provider value={{ loggedIn: loggedIn, setLoggedIn: setLoggedIn }}>
+    <UserContext.Provider value={{ user: user, setUser: setUser}}>
+      <LoggedInContext.Provider value={{ loggedIn: loggedIn, setLoggedIn: setLoggedIn }}>
 
-      <div className="container">
-        {!loggedIn ?
-          (
-            <BrowserRouter>
-            <Navbar />
-              <Routes>
-                <Route path="/"
-                  element={<LandingPage />}
-                />
-                <Route path="/login"
-                  element={<Login/>}
-                />
-                <Route path="/signup"
-                  element={<SignUp />}
-                />
-              </Routes>
-            </BrowserRouter>
-          )
-          :
-          (
-            <BrowserRouter>
-            <Navbar />
-              <Routes>
-                <Route path="/"
-                  element={<LandingPage />}
-                />
-                <Route path="/deposit"
-                  element={<Cashier />}
-                />
-                <Route path="/withdrawal"
-                  element={<Cashier />}
-                />
-              </Routes>
-            </BrowserRouter>
-          )
-        }
+        <div className="container">
+          {!loggedIn ?
+            (
+              <BrowserRouter>
+                <Navbar />
+                <Routes>
+                  <Route path="/"
+                    element={<LandingPage />}
+                  />
+                  <Route path="/login"
+                    element={<Login />}
+                  />
+                  <Route path="/signup"
+                    element={<SignUp />}
+                  />
+                </Routes>
+              </BrowserRouter>
+            )
+            :
+            (
+              <BrowserRouter>
+                <Navbar />
+                <Routes>
+                  <Route path="/"
+                    element={<LandingPage />}
+                  />
+                  <Route path="/deposit"
+                    element={<Cashier />}
+                  />
+                  <Route path="/withdrawal"
+                    element={<Cashier />}
+                  />
+                </Routes>
+              </BrowserRouter>
+            )
+          }
 
-        {/* <ReactKeycloakProvider authClient={keycloak}>
+          {/* <ReactKeycloakProvider authClient={keycloak}>
         <BrowserRouter>
         <Routes>
         <Route path="/"
@@ -77,8 +81,9 @@ function App() {
         </Routes>
         </BrowserRouter>
       </ReactKeycloakProvider> */}
-      </div >
-    </LoggedInContext.Provider>
+        </div >
+      </LoggedInContext.Provider>
+    </UserContext.Provider>
   );
 }
 

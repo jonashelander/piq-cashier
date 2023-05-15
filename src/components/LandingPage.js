@@ -2,13 +2,18 @@ import { useContext } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import LoggedInContext from "../contexts/LoggedInContext";
 import '../styles/App.css'
+import UserContext from "../contexts/UserContext";
 
 
 
 
-function LandingPage() {
+const LandingPage = (props) => {
     const { loggedIn } = useContext(LoggedInContext);
+    const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
+
+    console.log("user balance, landingpage " + user.balance);
+    console.log("user balanceCy, landingpage " + user.balanceCy);
 
     const handleDeposit = () => {
         // Navigate to the cashier in deposit mode.
@@ -22,6 +27,7 @@ function LandingPage() {
 
     return (
         <div>
+
             {loggedIn ?
                 (
                     <div className="landingPageLoggedIn">

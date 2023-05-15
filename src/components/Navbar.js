@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import "../styles/App.css";
 import LoggedInContext from "../contexts/LoggedInContext";
+import UserContext from "../contexts/UserContext";
 // import { useKeycloak } from "@react-keycloak/web";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function Navbar() {
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
+  const { user, setUset } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleSignUp = () => {
@@ -34,7 +36,7 @@ function Navbar() {
     <header className="navbar">
       <h1 onClick={handleNavigateHome}>Cashier</h1>
       {loggedIn ?
-        <h3>Balance: $ {balance}</h3>
+        <p>Balance: <span>{user.balance} </span></p>
         : null}
 
       <nav>
