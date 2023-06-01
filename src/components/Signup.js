@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { signUp } from "../api/userApi";
+import { signUp } from "../api/authApi";
 import { useNavigate } from "react-router-dom";
 
-function SignUp() {
+function Signup() {
     const navigate = useNavigate();
     const [firstName, setFirstName] = useState();
     const [lastName, setlastName] = useState();
@@ -149,4 +149,4 @@ function SignUp() {
     );
 }
 
-export default SignUp;
+export default Signup;

@@ -1,19 +1,32 @@
-import { useContext } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import LoggedInContext from "../contexts/LoggedInContext";
 import '../styles/App.css'
 import UserContext from "../contexts/UserContext";
+import { authUser } from "../api/authApi";
 
 
 
 
-const LandingPage = (props) => {
-    const { loggedIn } = useContext(LoggedInContext);
-    const { user, setUser } = useContext(UserContext);
+const LandingPage = (props) => {    
+
     const navigate = useNavigate();
+    const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
+    const { user } = useContext(UserContext);
+    const authDTO = {
+        userId: user.userId,
+        sessionId: user.sessionId
+    }
 
-    console.log("user balance, landingpage " + user.balance);
-    console.log("user balanceCy, landingpage " + user.balanceCy);
+    useEffect(() => {
+        authUser(authDTO)
+            .then(response => {
+                if (response.data === true) {
+                    console.log("User authenticated.")
+                    setLoggedIn(true);
+                } else console.log("User NOT authenticated.");
+            })
+    })
 
     const handleDeposit = () => {
         // Navigate to the cashier in deposit mode.

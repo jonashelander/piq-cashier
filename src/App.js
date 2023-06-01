@@ -19,13 +19,8 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
 
-  function signUp() {
-    //redirect to register page
-    // Send requeqest to create user
-  }
-
   return (
-    <UserContext.Provider value={{ user: user, setUser: setUser}}>
+    <UserContext.Provider value={{ user: user, setUser: setUser }}>
       <LoggedInContext.Provider value={{ loggedIn: loggedIn, setLoggedIn: setLoggedIn }}>
 
         <div className="container">

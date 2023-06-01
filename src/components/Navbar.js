@@ -4,11 +4,12 @@ import LoggedInContext from "../contexts/LoggedInContext";
 import UserContext from "../contexts/UserContext";
 // import { useKeycloak } from "@react-keycloak/web";
 import { Link, useNavigate } from "react-router-dom";
+import { logOut } from "../api/authApi";
 
 
 function Navbar() {
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
-  const { user, setUset } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleSignUp = () => {
@@ -21,7 +22,10 @@ function Navbar() {
   }
 
   const handleLogOut = () => {
-    setLoggedIn(false);
+    logOut(user.userId)
+      .then(
+        setLoggedIn(false)
+      )
     navigate("/");
   }
 
@@ -41,12 +45,12 @@ function Navbar() {
 
       <nav>
         {loggedIn ? (
-          <button onClick={handleLogOut}>Log Out</button>
+          <button onClick={handleLogOut}>Sign Out</button>
         )
           :
           (
             <div>
-              <button onClick={handleLogIn}>Log In</button>
+              <button onClick={handleLogIn}>Sign In</button>
               <button onClick={handleSignUp}>Sign Up</button>
             </div>
           )

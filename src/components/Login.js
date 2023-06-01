@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LoggedInContext from '../contexts/LoggedInContext';
-import { login, test } from '../api/userApi';
+import { login } from '../api/authApi';
 import UserContext from '../contexts/UserContext';
 
 function Login() {
@@ -14,8 +13,7 @@ function Login() {
   }
 
   const navigate = useNavigate();
-  const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   const handleUsernameChange = (event) => {
     setEmail(event.target.value);
@@ -31,11 +29,8 @@ function Login() {
       .then(response => {
         if (response.status === 200) {
           setUser(response.data);
-          setLoggedIn(true);
           localStorage.setItem('userId', response.data.userId)
           localStorage.setItem('sessionId', response.data.sessionId)
-          console.log("sessionId is: " + localStorage.getItem('sessionId'));
-          console.log("userId is: " + localStorage.getItem('userId'));
           navigate("/")
         }
       })
