@@ -18,7 +18,7 @@ const cashierInstance = (props) => {
       containerWidth: '400px',
       autoOpenFirstPaymentMethod: false,
       // providerType: 'creditcard',
-      listType: 'grid',
+      //listType: 'grid',
       // lastUsedDepositAmount: true,  
       // predefinedValues: false,
     },
