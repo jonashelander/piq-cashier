@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const api_url = "http://localhost:8080/user/";
+const api_url = "https://piq-cashier-backend.onrender.com/user/";
 
 const signUp = async (signupDTO) => {
     const user = await axios.post(api_url + "signup", signupDTO);
