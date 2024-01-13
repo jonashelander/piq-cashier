@@ -31,8 +31,6 @@ function Login() {
           setUser(response.data);
           localStorage.setItem('userId', response.data.userId)
           localStorage.setItem('sessionId', response.data.sessionId)
-          console.log('localstorage ' + localStorage.getItem('userId'));
-          console.log(localStorage.getItem('sessionId'));
           navigate("/")
         }
       })

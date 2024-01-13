@@ -8,25 +8,27 @@ import { authUser } from "../api/authApi";
 
 
 
-const LandingPage = (props) => {    
+const LandingPage = (props) => {
 
     const navigate = useNavigate();
     const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
-    const { user } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
+    const userId = localStorage.getItem("userId");
+    const sessionId = localStorage.getItem("sessionId");
     const authDTO = {
-        userId: user.userId,
-        sessionId: user.sessionId
+        userId: userId,
+        sessionId: sessionId
     }
 
     useEffect(() => {
+        console.log("local " + localStorage.getItem("userId"));
         authUser(authDTO)
             .then(response => {
-                if (response.data === true) {
-                    console.log("User authenticated.")
-                    setLoggedIn(true);
-                } else console.log("User NOT authenticated.");
+                setUser(response.data)
+                setLoggedIn(true);
             })
-    })
+    },[]
+    )
 
     const handleDeposit = () => {
         // Navigate to the cashier in deposit mode.

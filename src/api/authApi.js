@@ -13,6 +13,7 @@ const login = async (loginDTO) => {
     try {
         const resp = await axios.post(api_url + "signin", loginDTO);
         if (resp.status === 200) {
+            console.log(resp.status)
             return resp;
         }
         throw new Error("Could not log in");
@@ -34,14 +35,16 @@ const logOut = async (userId) => {
     }
 };
 
-const authUser = async (userId) => {
+const authUser = async (authDTO) => {
 
     try {
-        const resp = await axios.post(api_url + "auth", userId);
+        console.log("authdto " + authDTO.userId)
+        const resp = await axios.post(api_url + "auth", authDTO);
         if (resp.status === 200) {
+            console.log("200");
             return resp;
         }
-        throw new Error("User has no active session")
+        throw new Error("Unauthorized")
     } catch (error) {
         throw error.message;
     }

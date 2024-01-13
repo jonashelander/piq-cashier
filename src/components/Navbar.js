@@ -1,16 +1,22 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../styles/App.css";
 import LoggedInContext from "../contexts/LoggedInContext";
 import UserContext from "../contexts/UserContext";
 // import { useKeycloak } from "@react-keycloak/web";
 import { Link, useNavigate } from "react-router-dom";
 import { logOut } from "../api/authApi";
+import { authUser } from "../api/authApi";
 
 
 function Navbar() {
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
+
+  const authDTO = {
+    userId: user.userId,
+    sessionId: user.sessionId
+  }
 
   const handleSignUp = () => {
     navigate("/signup");
@@ -30,11 +36,13 @@ function Navbar() {
   }
 
   const handleNavigateHome = () => {
+    window.location.reload(false);
     navigate("/");
   }
 
   const [balance, setBalance] = useState(90);
   // const { keycloak, initialized } = useKeycloak();
+
 
   return (
     <header className="navbar">
