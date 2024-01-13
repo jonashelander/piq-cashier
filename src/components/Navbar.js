@@ -36,8 +36,8 @@ function Navbar() {
   }
 
   const handleNavigateHome = () => {
-    window.location.reload(false);
     navigate("/");
+    window.location.reload(false);
   }
 
   const [balance, setBalance] = useState(90);
