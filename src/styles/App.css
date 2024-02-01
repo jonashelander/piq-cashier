@@ -5,8 +5,10 @@
 }
 
 .container {
-  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  font-family: sans-serif;
   margin: 0 auto;
 }
 
@@ -15,13 +17,69 @@
   justify-content: space-between;
   height: 55px;
   background-color: #46beab;
-  margin-bottom: 50px;
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
+
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: 1000;
 }
 
-.navbar h1 {
+.navbarRoutes {
+  display: flex;
+  justify-content: space-between;
+  width: 10%;
+  text-decoration: underline;
+}
+
+.navbarRoutes button {
+  font-size:16px;
+}
+
+.cashierLink:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.boLink:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.signUp {
+  background-color: red;
+  padding-right: 40px;
+}
+
+.signUp:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.signIn:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.signOut {
+  display: flex;
+  flex-direction: row;
+  justify-items: start;
+  padding-right: 40px;
+}
+
+.signOut button:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.navbar h2 {
   cursor: pointer;
 }
 
@@ -33,10 +91,16 @@
   content: '€';
 }
 
+.signOutlogged {
+  display: flex;
+  flex-direction: row;
+}
+
 .signup {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 70px;
   /* justify-content: center; */
 }
 
@@ -48,6 +112,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 70px;
   /* justify-content: center; */
 }
 
@@ -55,17 +120,18 @@
   margin-bottom: 20px;
 }
 
-
 .landingPageLoggedIn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 30px;
+  padding-top: 20px;
 }
 
 .landingPageLoggedOut {
   display: flex;
   justify-content: center;
+  padding-top: 20px;
 }
 
 .landingPageLoggedIn button {
@@ -76,6 +142,20 @@
 #cashier {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
+}
+
+.cashierContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.txLog {
+  height: 1000px;
+  width: 100%;
+  border-right: 1px solid #eee;
+  padding: 20px;
 }
 
 .navbar button {
@@ -92,11 +172,176 @@ label {
   display: block;
 }
 
-input {
-  margin-bottom: 10px;
-}
+/* input {
+  margin-bottom: 2%;
+  margin-top: 2px;
+} */
 
 .signUp {
   display: flex;
   justify-content: space-between;
+}
+
+.backoffice {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 70px;
+}
+
+div.userButton {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+}
+
+.buttonName {
+  display: flex;
+  justify-content: flex-start
+}
+
+.buttonName p {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+div.content.active {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: left;
+}
+
+div.content.active input {
+  width: 40%;
+  border-radius: 5px;
+  padding: 5px 5px;
+  margin-top: 2px;
+}
+
+button.collapsible {
+  background-color: #a7eee2;
+  cursor: pointer;
+  padding: 10px;
+  width: 50%;
+  border: none;
+  border-radius: 5px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.collapsible.active,
+.collapsible:hover {
+  background-color: #46beab;
+}
+
+.content {
+  display: none;
+  text-align: left;
+  margin-top: 3px;
+  width: 100%;
+}
+
+div.content.active {
+  display: flex;
+  width: 40%;
+  background-color: white;
+}
+
+.active {
+  display: block;
+}
+
+.bo-input {
+  display: flex;
+  font-size: 17px;
+  flex-direction: column;
+  justify-items: center;
+  width: 100%;
+  padding: 10px;
+}
+
+/* Slider switch */
+
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-top: 10px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: red;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #46beab;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.save-button {
+  background-color: #a7eee2;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 50%;
+}
+
+.save-button:hover {
+  background-color: #46beab;
 }

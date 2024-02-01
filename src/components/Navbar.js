@@ -40,26 +40,36 @@ function Navbar() {
     window.location.reload(false);
   }
 
+  const handleNavigateToBackoffice = () => {
+    navigate("/backoffice");
+  }
+
   const [balance, setBalance] = useState(90);
   // const { keycloak, initialized } = useKeycloak();
 
 
   return (
     <header className="navbar">
-      <h1 onClick={handleNavigateHome}>Cashier</h1>
+      <div className="navbarRoutes">
+        <button className="cashierLink" onClick={handleNavigateHome}>Cashier</button>
+      <button className="boLink" onClick={handleNavigateToBackoffice}>Backoffice</button>
+      </div>
       {loggedIn ?
         <p>Balance: <span>{user.balance} </span></p>
         : null}
 
       <nav>
         {loggedIn ? (
-          <button onClick={handleLogOut}>Sign Out</button>
+          <div className="signOut">
+            <p>{user.email}</p>
+            <button onClick={handleLogOut}>Sign Out</button>
+          </div>
         )
           :
           (
-            <div>
-              <button onClick={handleLogIn}>Sign In</button>
-              <button onClick={handleSignUp}>Sign Up</button>
+            <div className="signOutlogged">
+              <button className="signIn" onClick={handleLogIn}>Sign In</button>
+              <button className="signUp" onClick={handleSignUp}>Sign Up</button>
             </div>
           )
         }

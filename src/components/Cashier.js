@@ -40,8 +40,12 @@ function Cashier() {
   useEffect(() => { cashierInstance(location.state) });
 
   return (
-    <div id="cashier">
 
+    <div className='cashierContainer'>
+      <div className="txLog">
+        <h2>Transaction log</h2>
+      </div>
+      <div id="cashier"></div>
     </div>
   );
 }

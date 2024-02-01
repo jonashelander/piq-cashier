@@ -4,6 +4,7 @@ import LoggedInContext from "../contexts/LoggedInContext";
 import '../styles/App.css'
 import UserContext from "../contexts/UserContext";
 import { authUser } from "../api/authApi";
+import { v4 as uuidv4 } from 'uuid';
 
 
 
@@ -21,7 +22,6 @@ const LandingPage = (props) => {
     }
 
     useEffect(() => {
-        console.log("local " + localStorage.getItem("userId"));
         authUser(authDTO)
             .then(response => {
                 setUser(response.data)
@@ -30,13 +30,16 @@ const LandingPage = (props) => {
     },[]
     )
 
+    const createTxLog = () => {
+        const cashierSesisonId = uuidv4();
+    }
+
     const handleDeposit = () => {
-        // Navigate to the cashier in deposit mode.
+        createTxLog();
         navigate("/deposit", { state: { method: 'deposit' } })
 
     }
     const handleWithdrawal = () => {
-        // Navigate to the cashier in withdrawal mode.
         navigate("/withdrawal", { state: { method: 'withdrawal' } })
     }
 
