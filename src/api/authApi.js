@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const auth_url = "http://localhost:8080/user/";
+const auth_url = "https://piq-cashier-backend.onrender.com/user/";
 
 const signUp = async (signupDTO) => {
     const user = await axios.post(auth_url + "signup", signupDTO);
@@ -62,7 +62,7 @@ const getUsers = async () => {
 
 const updateUser = async (userId, userDTO) => {
     try {
-        const resp = await axios.put(`http://localhost:8080/user/${userId}`, userDTO, {
+        const resp = await axios.put(`https://piq-cashier-backend.onrender.com/${userId}`, userDTO, {
             headers: {
                 'Content-Type': 'application/json',
             },
