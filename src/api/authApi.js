@@ -62,7 +62,7 @@ const getUsers = async () => {
 
 const updateUser = async (userId, userDTO) => {
     try {
-        const resp = await axios.put(`https://piq-cashier-backend.onrender.com/${userId}`, userDTO, {
+        const resp = await axios.put(`https://piq-cashier-backend.onrender.com/user/${userId}`, userDTO, {
             headers: {
                 'Content-Type': 'application/json',
             },
