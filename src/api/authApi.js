@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const auth_url = "http://localhost:8080/user/";
+const auth_url = "https://piq-cashier-backend.onrender.com/user/";
 
 const signUp = async (signupDTO) => {
     const user = await axios.post(auth_url + "signup", signupDTO);
@@ -10,9 +10,9 @@ const signUp = async (signupDTO) => {
 
 const login = async (loginDTO) => {
     try {
-        console.log(loginDTO);
         const resp = await axios.post(auth_url + "signin", loginDTO);
         if (resp.status === 200) {
+            console.log(resp.data)
             return resp;
         }
         throw new Error("Could not log in");
