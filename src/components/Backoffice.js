@@ -34,9 +34,12 @@ const CollapsibleComponent = () => {
         });
     };
 
-    const handleSaveChanges = async (index) => {
-        const updatedUser = users[index];
-        updateUser(users[index], users[index].userId);
+    const handleSaveChanges = (userId, userDTO) => {
+        console.log(userId)
+        updateUser(userId, userDTO)
+            .then(resp => {
+                console.log(resp.data);
+            })
     };
 
 
@@ -187,7 +190,7 @@ const CollapsibleComponent = () => {
                             </label>
                         </div>
                         <div className="bo-input">
-                            <button className="save-button" onClick={() => handleSaveChanges(index, user.userId)}>
+                            <button className="save-button" onClick={() => handleSaveChanges(user.userId, user)}>
                                 Save changes
                             </button>
                         </div>

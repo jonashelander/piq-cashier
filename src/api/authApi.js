@@ -60,18 +60,23 @@ const getUsers = async () => {
     }
 }
 
-const updateUser = async (userDTO) => {
+const updateUser = async (userId, userDTO) => {
     try {
-        const resp = await axios.put(auth_url, userDTO)
-        console.log(resp)
+        const resp = await axios.put(`http://localhost:8080/user/${userId}`, userDTO, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        console.log(resp);
         if (resp.status === 200) {
             return resp;
         }
-        throw new Error(resp.statusText)
+        throw new Error("Could not update user");
     } catch (error) {
-        throw error.message
+        throw error.message;
     }
-}
+};
+
 
 
 
