@@ -1,77 +1,32 @@
 * {
-  /* width: 1200px; */
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+html {
+  font-size: 62.5%;
+}
+
+body {
   font-family: sans-serif;
-  margin: 0 auto;
+  color: #555;
+  font-weight: 400;
+  line-height: 1;
+  font-size: 1.6rem;
 }
 
-.navbar {
+/* Navbar section */
+
+.nav-section {
   display: flex;
   justify-content: space-between;
-  height: 55px;
-  background-color: #46beab;
-  align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
-
   position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
-  z-index: 1000;
+  height: 5rem;
 }
 
-.navbarRoutes {
+.loggedInUser {
   display: flex;
-  justify-content: space-between;
-  width: 10%;
-  text-decoration: underline;
-}
-
-.navbarRoutes button {
-  font-size:16px;
-}
-
-.cashierLink:hover {
-  color: white;
-  text-decoration: underline;
-}
-
-.boLink:hover {
-  color: white;
-  text-decoration: underline;
-}
-
-.signUp {
-  background-color: red;
-  padding-right: 40px;
-}
-
-.signUp:hover {
-  color: white;
-  text-decoration: underline;
-}
-
-.signIn:hover {
-  color: white;
-  text-decoration: underline;
-}
-
-.signOut {
-  display: flex;
-  flex-direction: row;
-  justify-items: start;
-  padding-right: 40px;
 }
 
 .signOut button:hover {
@@ -79,115 +34,55 @@
   text-decoration: underline;
 }
 
-.navbar h2 {
-  cursor: pointer;
-}
-
-.navbar button {
-  cursor: pointer;
+.user {
+  font-weight: bold;
+  margin-right: 5px;
 }
 
 .navbar p span:before {
-  content: '€';
+  content: "€";
 }
 
-.signOutlogged {
+.nav-user {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
 }
+
+/* Sign up component */
 
 .signup {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 70px;
-  /* justify-content: center; */
 }
 
-.signupHeader h1 {
-  margin-bottom: 20px;
-}
+/* Login component */
 
 .login {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 70px;
-  /* justify-content: center; */
+  margin-top: 9rem;
+  gap: 1rem;
 }
 
-.loginHeader h1 {
-  margin-bottom: 20px;
-}
+/* Landing Component */
 
-.landingPageLoggedIn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  padding-top: 20px;
-}
-
-.landingPageLoggedOut {
+.landing {
   display: flex;
   justify-content: center;
-  padding-top: 20px;
+  padding-top: 9rem;
+  gap: 1rem;
 }
 
-.landingPageLoggedIn button {
-  height: 50px;
-  width: 100px;
-}
-
-#cashier {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.cashierContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.txLog {
-  height: 1000px;
-  width: 100%;
-  border-right: 1px solid #eee;
-  padding: 20px;
-}
-
-.navbar button {
-  margin-left: 20px;
-  background-color: #46beab;
-  border: none;
-}
-
-.signUp button {
-  margin-top: 10px;
-}
-
-label {
-  display: block;
-}
-
-/* input {
-  margin-bottom: 2%;
-  margin-top: 2px;
-} */
-
-.signUp {
-  display: flex;
-  justify-content: space-between;
-}
+/* Backoffice user cards */
 
 .backoffice {
   display: flex;
-  gap: 10px;
   align-items: center;
   flex-direction: column;
-  margin-top: 70px;
+  gap: 1rem;
+  margin-top: 9rem;
 }
 
 div.userButton {
@@ -199,7 +94,7 @@ div.userButton {
 
 .buttonName {
   display: flex;
-  justify-content: flex-start
+  justify-content: flex-start;
 }
 
 .buttonName p {
@@ -211,8 +106,6 @@ div.userButton {
 div.content.active {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  align-items: left;
 }
 
 div.content.active input {
@@ -251,23 +144,8 @@ div.content.active {
   background-color: white;
 }
 
-.active {
-  display: block;
-}
+/* Switch button */
 
-.bo-input {
-  display: flex;
-  font-size: 17px;
-  flex-direction: column;
-  justify-items: center;
-  width: 100%;
-  padding: 10px;
-}
-
-/* Slider switch */
-
-
-/* The switch - the box around the slider */
 .switch {
   position: relative;
   display: inline-block;
@@ -276,14 +154,12 @@ div.content.active {
   margin-top: 10px;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* The slider */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -292,8 +168,8 @@ div.content.active {
   right: 0;
   bottom: 0;
   background-color: red;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -304,44 +180,28 @@ div.content.active {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
-input:checked+.slider {
+input:checked + .slider {
   background-color: #46beab;
 }
 
-input:focus+.slider {
-  box-shadow: 0 0 1px #2196F3;
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
 
 .slider.round:before {
   border-radius: 50%;
-}
-
-.save-button {
-  background-color: #a7eee2;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 50%;
-}
-
-.save-button:hover {
-  background-color: #46beab;
 }
