@@ -1,62 +1,32 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* HEADER SECTION */
 
-html {
-  font-size: 62.5%;
-}
-
-body {
-  font-family: sans-serif;
-  color: #555;
-  font-weight: 400;
-  line-height: 1;
-  font-size: 1.6rem;
-}
-
-/* Navbar section */
-
-.nav-section {
+.header {
   display: flex;
   justify-content: space-between;
-  position: sticky;
-  height: 5rem;
+  align-items: center;
+  height: 9.6rem;
+  padding: 0 4.8rem;
+  background-color: #fbe5b3;
 }
 
-.loggedInUser {
+.logo-box {
   display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  font-family: Bungee Spice;
+  font-size: 4.4rem;
+  /* border-bottom: 3px solid #cc1600; */
 }
 
-.signOut button:hover {
-  color: white;
-  text-decoration: underline;
+.logo {
+  /* margin-right: 0.2rem; */
 }
-
-.user {
-  font-weight: bold;
-  margin-right: 5px;
-}
-
-.navbar p span:before {
-  content: "€";
-}
-
-.nav-user {
-  display: flex;
-  /* flex-direction: row; */
-}
-
-/* Sign up component */
 
 .signup {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-/* Login component */
 
 .login {
   display: flex;
@@ -66,16 +36,58 @@ body {
   gap: 1rem;
 }
 
-/* Landing Component */
-
-.landing {
+.user {
   display: flex;
-  justify-content: center;
-  padding-top: 9rem;
-  gap: 1rem;
+  align-items: center;
+  gap: 4rem;
 }
 
-/* Backoffice user cards */
+.loggedInUser {
+  display: flex;
+}
+
+.user-avatar {
+  height: 4.8rem;
+  border-radius: 50%;
+}
+
+/* CASHIER SECTION */
+
+.section-cashier {
+  background-color: #fbe5b3;
+  padding: 4.8rem 0 9.6rem 0;
+}
+
+.cashier {
+  max-width: 130rem;
+  display: grid;
+  gap: 9.6rem;
+  grid-template-columns: 2fr 1fr;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+.cashier-box {
+  display: flex;
+  justify-content: center;
+}
+
+.cashier-setting-box {
+  display: flex;
+  justify-content: center;
+}
+/* 
+.cashier-settings {
+  height: 100%;
+  width: 100%;
+  background-color: red;
+} */
+
+.test {
+  background-color: blue;
+}
+
+/* USER CARDS */
 
 .backoffice {
   display: flex;
@@ -144,7 +156,7 @@ div.content.active {
   background-color: white;
 }
 
-/* Switch button */
+/* USER CARDS - SWITCH BUTTON */
 
 .switch {
   position: relative;

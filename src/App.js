@@ -19,7 +19,7 @@ function App() {
       <LoggedInContext.Provider
         value={{ loggedIn: loggedIn, setLoggedIn: setLoggedIn }}
       >
-        <div className="container">
+        <div>
           {!loggedIn ? (
             <BrowserRouter>
               <Navbar />

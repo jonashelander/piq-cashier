@@ -4,6 +4,7 @@ import LoggedInContext from "../contexts/LoggedInContext";
 import "../styles/App.css";
 import UserContext from "../contexts/UserContext";
 import { authUser } from "../api/authApi";
+import Cashier from "./Cashier";
 
 const LandingPage = (props) => {
   const navigate = useNavigate();
@@ -35,18 +36,24 @@ const LandingPage = (props) => {
   };
 
   return (
-    <div>
+    <main>
       {loggedIn ? (
-        <div className="landing">
-          <button onClick={handleDeposit}>Deposit</button>
-          <button onClick={handleWithdrawal}>Whitdrawal</button>
-        </div>
+        <section className="section-cashier">
+          <div className="cashier">
+            <div className="cashier-setting-box">
+              <div className="cashier-settings"></div>
+            </div>
+            <div className="cashier-box">
+              <Cashier />
+            </div>
+          </div>
+        </section>
       ) : (
-        <div className="landing">
+        <div className="hero">
           <h3>Please Log In, or Sign Up...</h3>
         </div>
       )}
-    </div>
+    </main>
   );
 };
 
