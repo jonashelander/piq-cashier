@@ -35,19 +35,14 @@ const LandingPage = (props) => {
     navigate("/withdrawal", { state: { method: "withdrawal" } });
   };
 
+  const handleReload = () => {
+    window._PaymentIQCashierReset();
+  };
+
   return (
     <main>
       {loggedIn ? (
-        <section className="section-cashier">
-          <div className="cashier">
-            <div className="cashier-setting-box">
-              <div className="cashier-settings"></div>
-            </div>
-            <div className="cashier-box">
-              <Cashier />
-            </div>
-          </div>
-        </section>
+        <Cashier />
       ) : (
         <div className="hero">
           <h3>Please Log In, or Sign Up...</h3>

@@ -6,7 +6,6 @@ import UserContext from "../contexts/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import { logOut } from "../api/authApi";
 import { authUser } from "../api/authApi";
-import profile from "../img/profile.jpg";
 import { CashRegister, CoinVertical } from "@phosphor-icons/react";
 
 function Navbar() {
@@ -18,6 +17,8 @@ function Navbar() {
     userId: user.userId,
     sessionId: user.sessionId,
   };
+
+  useEffect(() => {}, [user]);
 
   const handleSignUp = () => {
     navigate("/signup");
@@ -35,7 +36,7 @@ function Navbar() {
 
   const handleNavigateHome = () => {
     navigate("/");
-    window.location.reload(false);
+    window._PaymentIQCashierReset();
   };
 
   const handleNavigateToBackoffice = () => {
@@ -46,7 +47,7 @@ function Navbar() {
 
   return (
     <header className="header">
-      <div className="logo-box" onClick={() => navigate("/")}>
+      <div className="logo-box" onClick={handleNavigateHome}>
         <span className="logo">Cashier</span>
         <CoinVertical size={44} color="#DC5400" />
       </div>
@@ -55,12 +56,12 @@ function Navbar() {
         <div className="user">
           <span className="user-username">Logged in as: {user.email}</span>
           <span className="user-balance">Balance: € {user.balance} </span>
-          <div className="img-box">
-            <img className="user-avatar" src={profile} alt="profile-avatar" />
-          </div>
-          <a className="btn" onClick={handleLogOut}>
+          {/* <div className="user-avatar">
+            <img className="avatar" src={profile} alt="profile-avatar" />
+          </div> */}
+          <button className="btn btn--outline" onClick={handleLogOut}>
             Sign Out
-          </a>
+          </button>
         </div>
       ) : (
         <div className="user">

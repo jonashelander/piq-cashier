@@ -11,15 +11,12 @@
 
 .logo-box {
   display: flex;
-  /* align-items: center; */
-  /* justify-content: center; */
   font-family: Bungee Spice;
   font-size: 4.4rem;
-  /* border-bottom: 3px solid #cc1600; */
 }
 
 .logo {
-  /* margin-right: 0.2rem; */
+  cursor: pointer;
 }
 
 .signup {
@@ -40,51 +37,82 @@
   display: flex;
   align-items: center;
   gap: 4rem;
+  font-size: 1.8rem;
+  font-weight: 500;
 }
 
-.loggedInUser {
-  display: flex;
-}
-
-.user-avatar {
+.avatar {
   height: 4.8rem;
   border-radius: 50%;
 }
 
 /* CASHIER SECTION */
 
+div.cardholder-container.input-container.empty.touched {
+  color: red;
+  background-color: red;
+  display: none;
+}
+
 .section-cashier {
   background-color: #fbe5b3;
   padding: 4.8rem 0 9.6rem 0;
+
+  /* Height to prevent cashier going outside of section */
+  /* height: 850px; */
 }
 
 .cashier {
   max-width: 130rem;
   display: grid;
   gap: 9.6rem;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   margin: 0 auto;
   padding: 0 3.2rem;
+  height: 60rem;
 }
 
 .cashier-box {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.cashier-setting-box {
+.cashier-settings-box {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
-/* 
-.cashier-settings {
-  height: 100%;
-  width: 100%;
-  background-color: red;
-} */
 
-.test {
-  background-color: blue;
+.payment-method.route-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cashier-description {
+  font-size: 2rem;
+  line-height: 1.6;
+  margin-bottom: 4.8rem;
+}
+
+.settings {
+  display: flex;
+}
+
+.input-mid-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.setting-description {
+  margin-bottom: 1rem;
+}
+
+.input-method-box {
+  display: flex;
+  flex-direction: column;
 }
 
 /* USER CARDS */
