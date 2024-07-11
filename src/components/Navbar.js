@@ -6,7 +6,7 @@ import UserContext from "../contexts/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import { logOut } from "../api/authApi";
 import { authUser } from "../api/authApi";
-import { CashRegister, CoinVertical } from "@phosphor-icons/react";
+//import { CashRegister, CoinVertical } from "@phosphor-icons/react";
 
 function Navbar() {
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
@@ -49,13 +49,13 @@ function Navbar() {
     <header className="header">
       <div className="logo-box" onClick={handleNavigateHome}>
         <span className="logo">Cashier</span>
-        <CoinVertical size={44} color="#DC5400" />
+        {/* <CoinVertical size={44} color="#DC5400" /> */}
       </div>
 
       {loggedIn ? (
         <div className="user">
-          <span className="user-username">Logged in as: {user.email}</span>
-          <span className="user-balance">Balance: € {user.balance} </span>
+          <p className="user-username">Logged in as: {user.email}</p>
+          <p className="user-balance">Balance: € <span className="user-balance-num">{user.balance}</span> </p>
           {/* <div className="user-avatar">
             <img className="avatar" src={profile} alt="profile-avatar" />
           </div> */}

@@ -5,6 +5,7 @@ import _PaymentIQCashier from "paymentiq-cashier-bootstrapper";
 import UserContext from "../contexts/UserContext";
 import "../styles/App.css";
 import "../styles/General.css";
+import { authUser, fetchUser } from "../api/authApi";
 
 function Cashier() {
   const navigate = useNavigate();
@@ -12,8 +13,18 @@ function Cashier() {
   const [mid, setMid] = useState("1000");
   const [method, setMethod] = useState("deposit");
 
-  const updateUser = (userId, userDTO) => {
-    console.log("testing");
+  const handleFetchUser = (userId) => {
+    fetchUser(userId)
+      .then((response) => {
+        if (response.status === 200) {
+          setUser(response.data);
+          const balance = document.getElementsByClassName('user-balance-num');
+          balance.textContent = user.balance;
+        }
+      })
+      .catch((error) => {
+        alert(error);
+      })
   };
 
   const handleMidChange = (event) => {
@@ -40,7 +51,7 @@ function Cashier() {
           sessionId: localStorage.getItem("sessionId"),
           method: method, // if not set, defaults to deposit
           environment: "test", // if not set, defaults to production
-          containerHeight: "600px",
+          containerHeight: "auto",
           containerWidth: "auto",
           autoOpenFirstPaymentMethod: "false",
           showFooter: "false",
@@ -89,7 +100,7 @@ function Cashier() {
           api.on({
             cashierInitLoad: () =>
               console.log("The cashier successfully loaded and is ready"),
-            success: () => updateUser(user.userId, user),
+            success: () => handleFetchUser(user.userId),
           });
           api.css(`
           #cashier{

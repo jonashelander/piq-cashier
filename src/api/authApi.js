@@ -46,6 +46,18 @@ const authUser = async (authDTO) => {
   }
 };
 
+const fetchUser = async (userId) => {
+  try {
+    const resp = await axios.get(`${auth_url}${userId}`);
+    if (resp.status === 200) {
+      return resp;
+    }
+    throw new Error("User Not Found")
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 const getUsers = async () => {
   try {
     const resp = await axios.get(auth_url);
@@ -75,4 +87,4 @@ const updateUser = async (userId, userDTO) => {
   }
 };
 
-export { signUp, login, logOut, authUser, getUsers, updateUser };
+export { signUp, login, logOut, authUser, fetchUser, getUsers, updateUser };
