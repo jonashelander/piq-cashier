@@ -49,13 +49,15 @@ function Navbar() {
     <header className="header">
       <div className="logo-box" onClick={handleNavigateHome}>
         <span className="logo">Cashier</span>
-        <CoinVertical size={44} color="#DC5400" />
+        {/* <CoinVertical size={44} color="#DC5400" /> */}
       </div>
 
       {loggedIn ? (
         <div className="user">
-          <span className="user-username">Logged in as: {user.email}</span>
-          <span className="user-balance">Balance: € {user.balance} </span>
+          <p className="user-username">Logged in as: {user.email}</p>
+          <p className="user-balance">
+            Balance: € <span className="balance">{user.balance}</span>
+          </p>
           {/* <div className="user-avatar">
             <img className="avatar" src={profile} alt="profile-avatar" />
           </div> */}

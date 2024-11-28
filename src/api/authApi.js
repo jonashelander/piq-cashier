@@ -75,4 +75,21 @@ const updateUser = async (userId, userDTO) => {
   }
 };
 
-export { signUp, login, logOut, authUser, getUsers, updateUser };
+const fetchUser = async (userId) => {
+  try {
+    const resp = await axios.get(`${auth_url}${userId}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log(resp);
+    if (resp.status === 200) {
+      return resp;
+    }
+    throw new Error("Could not update user");
+  } catch (error) {
+    throw error.message;
+  }
+};
+
+export { signUp, login, logOut, authUser, getUsers, updateUser, fetchUser };
