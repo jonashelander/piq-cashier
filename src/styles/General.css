@@ -86,9 +86,9 @@ body {
   font-size: 1.8rem;
   cursor: pointer;
   transition: all 0.3s;
-  align-self: flex-end;
-  justify-self: flex-start;
-  flex-shrink: 0;
+  /* align-self: flex-end;
+  justify-self: flex-start; */
+  /* flex-shrink: 0; */
 }
 
 .btn:hover {
@@ -110,17 +110,24 @@ body {
 }
 
 .input {
-  padding-left: 1rem;
+  padding: 0 1rem;
   height: 4.6rem;
   width: 16.9rem;
   font-size: 1.4rem;
-  text-align: left;
-  margin-right: 3.2rem;
   background-color: #fefaf0;
   border: 1px solid #cccccc;
-  /* border: none; */
   border-radius: 9px;
-  /* color: #fff; */
+}
+
+.input-large {
+  padding: 0 1rem;
+  height: 4.6rem;
+  /* width: 16.9rem; */
+  width: 30rem;
+  font-size: 1.4rem;
+  background-color: #fefaf0;
+  border: 1px solid #cccccc;
+  border-radius: 9px;
 }
 
 .input:focus {
@@ -131,10 +138,18 @@ body {
   padding-left: 1rem;
   height: 4.6rem;
   width: 16.9rem;
-  margin-right: 3.2rem;
   background-color: #fefaf0;
   border: 1px solid #cccccc;
   border-radius: 9px;
+}
+
+.container {
+  /* Convention standard: 120rem/1200px 
+  Or: 1140 might be even more standard.
+  */
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
 }
 
 .grid {
@@ -145,6 +160,10 @@ body {
 
 .grid--2-cols {
   grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .heading-primary,
@@ -159,4 +178,25 @@ body {
   font-size: 5.2rem;
   line-height: 1.05;
   margin-bottom: 3.2rem;
+}
+
+.heading-secondary {
+  font-size: 4.4rem;
+  line-height: 1.2;
+  margin-bottom: 9.6rem;
+}
+.heading-tertiary {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 3.2rem;
+}
+
+.subheading {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  /* color: #cf711f; */
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.75px;
 }

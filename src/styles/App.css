@@ -33,12 +33,32 @@
   gap: 1rem;
 }
 
-.user {
+/* RENAME THIS CLASS AT SOME POINT */
+.user-settings {
   display: flex;
   align-items: center;
   gap: 4rem;
   font-size: 1.8rem;
-  font-weight: 500;
+}
+
+.user-balance {
+  display: flex;
+  align-items: center;
+}
+
+.user-name {
+  display: flex;
+  align-items: center;
+}
+
+.signout-btn {
+  display: flex;
+  align-items: center;
+}
+
+.email,
+.balance {
+  font-weight: 600;
 }
 
 .avatar {
@@ -58,7 +78,8 @@ div.cardholder-container.input-container.empty.touched {
   background-color: #fbe5b3;
 
   /* padding-right should be 9.6rem but as the CC method are to high 13rem is needed atm */
-  padding: 4.8rem 0 13rem 0;
+  /* padding: 4.8rem 0 13rem 0; */
+  padding: 4.8rem 0 9.6rem 0;
 
   /* Height to prevent cashier going outside of section */
   /* height: 850px; */
@@ -67,23 +88,44 @@ div.cardholder-container.input-container.empty.touched {
 .cashier {
   max-width: 130rem;
   display: grid;
-  gap: 9.6rem;
   grid-template-columns: 1fr 1fr;
   margin: 0 auto;
   padding: 0 3.2rem;
-  height: 60rem;
+}
+
+.cashier-settings-box {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+}
+
+.cashier-settings {
+  margin-bottom: 9.6rem;
 }
 
 .cashier-box {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
-.cashier-settings-box {
+.setting-title {
+  font-size: 2.4rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 3.2rem;
+}
+
+.user-data {
+  display: grid;
+  column-gap: 2rem;
+  row-gap: 2rem;
+}
+
+.save-btn-box {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
 }
 
 .payment-method.route-container {
@@ -100,19 +142,25 @@ div.cardholder-container.input-container.empty.touched {
 
 .settings {
   display: flex;
-}
-
-.input-mid-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  gap: 2rem;
 }
 
 .setting-description {
   margin-bottom: 1rem;
 }
 
-.input-method-box {
+.input-mid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input-method {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-sessionid {
   display: flex;
   flex-direction: column;
 }

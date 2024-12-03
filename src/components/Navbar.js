@@ -3,10 +3,9 @@ import "../styles/App.css";
 import "../styles/General.css";
 import LoggedInContext from "../contexts/LoggedInContext";
 import UserContext from "../contexts/UserContext";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { logOut } from "../api/authApi";
-import { authUser } from "../api/authApi";
-import { CashRegister, CoinVertical } from "@phosphor-icons/react";
+import { CurrencyEur, SignOut, UserCircle } from "@phosphor-icons/react";
 
 function Navbar() {
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
@@ -17,8 +16,6 @@ function Navbar() {
     userId: user.userId,
     sessionId: user.sessionId,
   };
-
-  useEffect(() => {}, [user]);
 
   const handleSignUp = () => {
     navigate("/signup");
@@ -35,8 +32,11 @@ function Navbar() {
   };
 
   const handleNavigateHome = () => {
-    navigate("/");
-    window._PaymentIQCashierReset();
+    if (window.location.pathname === "/") {
+      window.location.reload(false);
+    } else {
+      navigate("/");
+    }
   };
 
   const handleNavigateToBackoffice = () => {
@@ -53,17 +53,27 @@ function Navbar() {
       </div>
 
       {loggedIn ? (
-        <div className="user">
-          <p className="user-username">Logged in as: {user.email}</p>
-          <p className="user-balance">
-            Balance: € <span className="balance">{user.balance}</span>
-          </p>
-          {/* <div className="user-avatar">
-            <img className="avatar" src={profile} alt="profile-avatar" />
-          </div> */}
-          <button className="btn btn--outline" onClick={handleLogOut}>
+        /* RENAME THIS CLASS AT SOME POINT */ 
+        <div className="user-settings">
+          <div className="user-balance">
+            <CurrencyEur weight="thin" size={30} />
+            <span className="balance">{user.balance}</span>
+          </div>
+
+          <div className="user-name">
+            <UserCircle size={30} weight="thin" className="user-avatar" />
+            <span className="email">{user.email}</span>
+          </div>
+
+          {/* <div className="signout-btn"> */}
+          <button
+            className="btn btn--outline signout-btn"
+            onClick={handleLogOut}
+          >
+            <SignOut weight="thin" size={30} />
             Sign Out
           </button>
+          {/* </div> */}
         </div>
       ) : (
         <div className="user">

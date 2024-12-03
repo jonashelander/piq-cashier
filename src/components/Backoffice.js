@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getUsers, updateUser } from "../api/authApi";
 
+
 const CollapsibleComponent = () => {
   const [activeIndexes, setActiveIndexes] = useState([]);
   const [users, setUsers] = useState([]);
@@ -24,6 +25,7 @@ const CollapsibleComponent = () => {
   const isCollapsibleActive = (index) => activeIndexes.includes(index);
 
   const handleInputChange = (index, field, value) => {
+    console.log(value)
     setUsers((prevUsers) => {
       const updatedUsers = [...prevUsers];
       updatedUsers[index] = { ...updatedUsers[index], [field]: value };
@@ -208,6 +210,9 @@ const CollapsibleComponent = () => {
             </div>
             <div className="bo-input">
               <p>User activated</p>
+              <input type="checkbox"
+              onChange={e => console.log(e.target.checked)}
+              />
               <label className="switch">
                 <input
                   type="checkbox"
@@ -219,7 +224,7 @@ const CollapsibleComponent = () => {
                 <span className="slider round"></span>
               </label>
             </div>
-            <div className="bo-input">
+            <div className="user-parameter">
               <button
                 className="save-button"
                 onClick={() => handleSaveChanges(user.userId, user)}

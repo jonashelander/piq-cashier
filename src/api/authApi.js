@@ -46,6 +46,18 @@ const authUser = async (authDTO) => {
   }
 };
 
+const fetchUser = async (userId) => {
+  try {
+    const resp = await axios.get(`${auth_url}${userId}`);
+    if (resp.status === 200) {
+      return resp;
+    }
+    throw new Error("User Not Found")
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 const getUsers = async () => {
   try {
     const resp = await axios.get(auth_url);
@@ -75,21 +87,21 @@ const updateUser = async (userId, userDTO) => {
   }
 };
 
-const fetchUser = async (userId) => {
-  try {
-    const resp = await axios.get(`${auth_url}${userId}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    console.log(resp);
-    if (resp.status === 200) {
-      return resp;
-    }
-    throw new Error("Could not update user");
-  } catch (error) {
-    throw error.message;
-  }
-};
+// const fetchUser = async (userId) => {
+//   try {
+//     const resp = await axios.get(`${auth_url}${userId}`, {
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     console.log(resp);
+//     if (resp.status === 200) {
+//       return resp;
+//     }
+//     throw new Error("Could not update user");
+//   } catch (error) {
+//     throw error.message;
+//   }
+// };
 
-export { signUp, login, logOut, authUser, getUsers, updateUser, fetchUser };
+export { signUp, login, logOut, authUser, fetchUser, getUsers, updateUser };
