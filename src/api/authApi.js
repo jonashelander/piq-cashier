@@ -2,8 +2,12 @@
 import axios from "axios";
 import { StrictMode } from "react";
 
-const auth_url = "http://localhost:8080/user/";
-const respUrl = "http://localhost:8080/response/";
+/* const auth_url = "http://localhost:8080/user/";
+const respUrl = "http://localhost:8080/response/"; */
+
+const auth_url = "https://piq-cashier-backend-production.up.railway.app/user/";
+const respUrl =
+  "https://piq-cashier-backend-production.up.railway.app/response/";
 
 const signUp = async (signupDTO) => {
   const user = await axios.post(auth_url + "signup", signupDTO);
