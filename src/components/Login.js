@@ -1,21 +1,23 @@
-import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { login } from '../api/authApi';
-import UserContext from '../contexts/UserContext';
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { login } from "../api/authApi";
+import UserContext from "../contexts/UserContext";
+import LoggedInContext from "../contexts/LoggedInContext";
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const loginDTO = {
     email: email,
-    password: password
-  }
+    password: password,
+  };
 
   const navigate = useNavigate();
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+  const { setLoggedIn } = useContext(LoggedInContext);
 
-  const handleUsernameChange = (event) => {
+  const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
 
@@ -26,41 +28,52 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     login(loginDTO)
-      .then(response => {
+      .then((response) => {
         if (response.status === 200) {
           setUser(response.data);
-          localStorage.setItem('userId', response.data.userId)
-          localStorage.setItem('sessionId', response.data.sessionId)
-          navigate("/")
+          console.log(response.data);
+          localStorage.setItem("id", response.data.id);
+          localStorage.setItem("token", response.data.token);
+          setLoggedIn(true);
+          navigate("/dashboard");
         }
       })
-      .catch(error => {
-        alert(error)
+      .catch((error) => {
+        alert(error);
         navigate("/login");
       });
   };
 
   return (
-    <div className='login'>
-
-      <div className='loginHeader'>
-        <h1>Login</h1>
-      </div>
-      <form>
+    <div className="login container">
+      <h2 className="heading-secondary">Login</h2>
+      <form className="login-form" onSubmit={handleSubmit}>
         <div>
-          <label>
-            Username:
-          </label>
-          <input type="text" value={email} onChange={handleUsernameChange} />
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="text"
+            value={email}
+            placeholder="Email"
+            required
+            onChange={handleEmailChange}
+          />
         </div>
         <div>
-          <label>
-            Password:
-          </label>
-          <input type="password" value={password} onChange={handlePasswordChange} />
+          <label for="password">Password:</label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            placeholder="Password"
+            required
+            onChange={handlePasswordChange}
+          />
         </div>
         <div>
-          <button type="submit" onClick={handleSubmit}>Log In</button>
+          <button className="btn" type="submit">
+            Log In
+          </button>
         </div>
       </form>
     </div>

@@ -1,89 +1,71 @@
 import "./styles/App.css";
-import Cashier from "./components/Cashier";
 import Navbar from "./components/Navbar";
-import LandingPage from "./components/LandingPage";
 import SignUp from "./components/Signup";
-import Backoffice from "./components/Backoffice";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ReactKeycloakProvider } from "@react-keycloak/web";
-// import keycloak from "./Keycloak";
-// import PrivateRoute from "./helpers/PrivateRoute";
-import { useContext, useEffect, useState } from "react";
+import Dashboard from "./components/Dashboard";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { useEffect, useState, useContext } from "react"; // <-- useContext här!
 import LoggedInContext from "./contexts/LoggedInContext";
 import Login from "./components/Login";
 import UserContext from "./contexts/UserContext";
+import { authUser } from "./api/authApi";
 
-
+function ProtectedRoute({ element }) {
+  const { loggedIn } = useContext(LoggedInContext);
+  return loggedIn ? element : <Navigate to="/" />;
+}
 
 function App() {
-
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const authDTO = {
+      id: localStorage.getItem("id"),
+      token: localStorage.getItem("token"),
+    };
+
+    authUser(authDTO)
+      .then((res) => {
+        setUser(res.data);
+        setLoggedIn(true);
+      })
+      .catch((err) => {
+        console.error("Auth failed:", err);
+        setLoggedIn(false);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <UserContext.Provider value={{ user: user, setUser: setUser }}>
-      <LoggedInContext.Provider value={{ loggedIn: loggedIn, setLoggedIn: setLoggedIn }}>
-
-        <div className="container">
-          {!loggedIn ?
-            (
-              <BrowserRouter>
-                <Navbar />
-                <Routes>
-                  <Route path="/"
-                    element={<LandingPage />}
-                  />
-                  <Route path="/login"
-                    element={<Login />}
-                  />
-                  <Route path="/signup"
-                    element={<SignUp />}
-                  />
-                  <Route path="/backoffice"
-                    element={<Backoffice />}
-                  />
-                </Routes>
-              </BrowserRouter>
-            )
-            :
-            (
-              <BrowserRouter>
-                <Navbar />
-                <Routes>
-                  <Route path="/"
-                    element={<LandingPage />}
-                  />
-                  <Route path="/deposit"
-                    element={<Cashier />}
-                  />
-                  <Route path="/withdrawal"
-                    element={<Cashier />}
-                  />
-                  <Route path="/backoffice"
-                    element={<Backoffice />}
-                  />
-                </Routes>
-              </BrowserRouter>
-            )
-          }
-
-          {/* <ReactKeycloakProvider authClient={keycloak}>
+    <UserContext.Provider value={{ user, setUser }}>
+      <LoggedInContext.Provider value={{ loggedIn, setLoggedIn }}>
         <BrowserRouter>
-        <Routes>
-        <Route path="/"
-        element={
-          <LandingPage />
-        } />
-        <Route path="/cashier"
-        element={
-          <PrivateRoute>
-          <Cashier />
-          </PrivateRoute>
-        } />
-        </Routes>
+          <Navbar />
+          <Routes>
+            {!loggedIn ? (
+              <>
+                <Route path="/" element={<Login />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="*" element={<Navigate to="/" />} />
+              </>
+            ) : (
+              <>
+                <Route
+                  path="/dashboard"
+                  element={<ProtectedRoute element={<Dashboard />} />}
+                />
+                <Route path="*" element={<Navigate to="/dashboard" />} />
+              </>
+            )}
+          </Routes>
         </BrowserRouter>
-      </ReactKeycloakProvider> */}
-        </div >
       </LoggedInContext.Provider>
     </UserContext.Provider>
   );
